@@ -1,0 +1,16 @@
+{
+  "name": "wxfeeder",
+  "version": "1.0.0",
+  "description": "Fetches current weather for a configured location and pushes it to a Pilcrow snippet via MCP.",
+  "main": "src/run.js",
+  "scripts": {
+    "start": "node src/run.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  }
+}

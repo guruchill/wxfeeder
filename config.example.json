@@ -1,0 +1,6 @@
+{
+  "pilcrowApiKey": "REPLACE_WITH_YOUR_PILCROW_API_KEY",
+  "snippetId": "REPLACE_WITH_YOUR_SNIPPET_ID",
+  "stationId": "REPLACE_WITH_YOUR_NWS_STATION_ID",
+  "timezone": "America/Chicago"
+}
