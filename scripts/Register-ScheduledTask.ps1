@@ -16,13 +16,19 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $runScript = Join-Path $root "scripts\Run-WxFeeder.ps1"
+$hiddenLauncher = Join-Path $root "scripts\Run-WxFeeder-Hidden.vbs"
 
 if (-not (Test-Path $runScript)) {
     throw "Could not find $runScript"
 }
+if (-not (Test-Path $hiddenLauncher)) {
+    throw "Could not find $hiddenLauncher"
+}
 
-$action = New-ScheduledTaskAction -Execute "powershell.exe" `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$runScript`"" `
+# Routed through the VBS launcher, not powershell.exe directly, so the task
+# runs with no console window flashing on screen every time it fires.
+$action = New-ScheduledTaskAction -Execute "wscript.exe" `
+    -Argument "`"$hiddenLauncher`"" `
     -WorkingDirectory $root
 
 $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) `

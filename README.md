@@ -36,8 +36,11 @@ server.
   transport, bearer auth) calling `update_snippet` and `set_manual_light_up`.
 - `src/run.js` — orchestrates one run, with automatic retry (3 attempts) on
   transient network failures.
-- `scripts/Run-WxFeeder.ps1` — the script Task Scheduler actually invokes;
-  logs to `logs/wxfeeder.log` and surfaces failures via exit code.
+- `scripts/Run-WxFeeder.ps1` — runs the harness once, logs to
+  `logs/wxfeeder.log`, and surfaces failures via exit code.
+- `scripts/Run-WxFeeder-Hidden.vbs` — what Task Scheduler actually invokes;
+  launches `Run-WxFeeder.ps1` with no console window, since PowerShell's own
+  `-WindowStyle Hidden` still flashes one briefly.
 - `scripts/Register-ScheduledTask.ps1` — registers the Windows Scheduled
   Task.
 - `scripts/Unregister-ScheduledTask.ps1` — removes it.
